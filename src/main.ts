@@ -2,7 +2,7 @@ import app from "./app";
 
 const port = process.env.port || 3000
 
-import swaggerJSDoc from "swagger-jsdoc";
+// import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
 import YAML from 'yamljs';
 const swaggerOptions = YAML.load('./src/v1/routes/swaggerConfig.yaml');
