@@ -1,0 +1,120 @@
+openapi: 3.0.3
+info:
+  title: Facturador REST API
+  description: REST API para sistema facturador.
+  contact: Javier Arciniegas
+    email: arciniegas.ortiz818@gmail.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/v1
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Auto generate
+        code:
+          type: string
+          description: Código de la categoría
+        name:
+          type: string
+          description: Nombre de la categoría
+        description:
+          type: string
+          description: Descripción de la categoría
+        active:
+          type: boolean
+          description: Estado de la categoría
+paths:
+  /categories:
+    get:
+      tags:
+        - Categorias
+      summary: Obtiene un listado con todas las categorias
+      description: Listado de Categorias
+      operationId: getCategories
+      responses:
+        '200':
+          description: Successful operation
+    post:
+      tags:
+        - Categorias
+      summary: Crear una nueva categoría
+      description: Crear Categoría
+      operationId: addCategory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Category"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Category"
+        '500':
+          description: Fail operation
+  /categories/{id}:
+    get:
+      tags:
+        - Categorias
+      summary: Obtiene el detalle de una categoría
+      description: Detalle Categoría
+      operationId: getCategory
+      parameters: 
+        - name: id
+          in: path
+          description: Id de la categoría
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+    put:
+      tags:
+        - Categorias
+      summary: Actualiza una categoría
+      description: Actualizar Categoría
+      operationId: updateCategory
+      parameters: 
+        - name: id
+          in: path
+          description: Id de la categoría
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+    delete:
+      tags:
+        - Categorias
+      summary: Elimina una categoría
+      description: Eliminar Categoría
+      operationId: deleteCategory
+      parameters: 
+        - name: id
+          in: path
+          description: Id de la categoría
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+definitions:
+  Category:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    required:      
+      - name
