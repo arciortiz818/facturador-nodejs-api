@@ -27,8 +27,8 @@ const getProductById = async (req:Request,res:Response) => {
 
 const updateProductById = async (req:Request,res:Response) => {
     try {        
-        const responseProduct = await updateProduct(req.params.id,req.body)
-        handleHttp(res,201,responseProduct);
+        const response = await updateProduct(req.params.id,req.body)
+        handleHttp(res,201,response);
     } catch (error) {
         handleHttp(res,500,error);
     }
@@ -36,8 +36,8 @@ const updateProductById = async (req:Request,res:Response) => {
 
 const deleteProductById = async (req:Request,res:Response) => {
     try {
-        const responseProduct = await deleteProduct(req.params.id)
-        handleHttp(res,201,responseProduct);
+        const response = await deleteProduct(req.params.id)
+        handleHttp(res,201,response);
     } catch (error) {
         handleHttp(res,500,error);
     }
