@@ -22,7 +22,7 @@ class App{
     }
 
     routes(){
-        this.express.use('/v1',router)
+        this.express.use('/api/v1',router)
         
     }
 
